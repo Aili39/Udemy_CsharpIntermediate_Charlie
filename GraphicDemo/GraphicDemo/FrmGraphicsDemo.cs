@@ -6,7 +6,7 @@ namespace GraphicDemo
         {
             InitializeComponent();
         }
-       private void FrmGraphicsDemo_Paint(object sender, PaintEventArgs e)
+        private void FrmGraphicsDemo_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             //Create a font
@@ -20,10 +20,16 @@ namespace GraphicDemo
             //Draw a line
             g.DrawLine(p, 0, 0, 140, 140);
             //Draw more
-            for (int i = 0; i < 500; i++)
+            for (int j = 0; j < 100; j++)
             {
-                g.DrawLine(p, i, (int)(Math.Sin(i / 50.0 * 3.14) * 50) + 200, i+1, (int)(Math.Sin((i+1)/50.0*3.14)*50) +200);
+                for (int i = 0; i < 500; i++)
+                {
+                    g.DrawLine(p, i, (int)(Math.Sin((i+j) / 50.0 * 3.14) * 50) + 200, i+1, (int)(Math.Sin((i+j+1)/50.0*3.14)*50) +200);
+                }
+                g.Clear(Color.White);
+                Thread.Sleep(100);
             }
+
         }
 
         private void FrmGraphicsDemo_Load(object sender, EventArgs e)
